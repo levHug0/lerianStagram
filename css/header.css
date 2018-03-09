@@ -1,0 +1,36 @@
+html {
+	height: 100%;		/*	This is important when it comes to resizing	regarding background size 'cover'*/
+}
+
+body{
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+
+	font-family: 'Bree Serif', serif;
+	background: url(../imgs/bg.jpg);
+	background-size: cover; 
+	background-position: center;
+}
+
+a {
+	font-size: 1.3em;
+}	
+
+#content {
+	padding-top: 50px;
+}
+
+img {
+	border-radius: 5px 5px 0 0;
+}
+
+figcaption {
+	padding-top: 8px;
+	font-weight: bold;
+	color: grey;
+}
+
+span {
+	padding-right: 10px
+}

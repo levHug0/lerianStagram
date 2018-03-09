@@ -1,0 +1,68 @@
+html {
+	height: 100%;		/*	This is important when it comes to resizing	regarding background size 'cover'*/
+}
+
+body{
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	font-family: 'Lato', sans-serif;
+}
+
+.myBackground {
+	background: url(../imgs/bg.jpg);
+	background-size: cover; 
+	background-position: center;
+}
+
+
+.container {
+	width: 30%;
+	margin: 200px auto 0 auto;
+	background-color: #F7F7F7;
+	border-radius: 5px 5px 0 0;
+	opacity: 0.9;
+	padding-bottom: 14px;
+}
+
+.container h1 {
+	font-size: 3em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.container span {
+	font-size: 1.2em;
+}
+
+.registerForm {
+	display: none;
+}
+
+.register {
+	padding: 0 14px;
+}
+
+hr {
+	order: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+span:hover {
+	color: #DCDCDC;
+}
+
+
+/*		Mobile phones	*/
+@media (max-width: 575px) { 
+	.container {
+		width: 70%;
+		margin-top: 40px
+	}
+
+	.container h1 {
+		font-size: 2em;
+	}
+}
