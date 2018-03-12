@@ -4,11 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link  href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.3.2/cropper.css" rel="stylesheet">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/components/button.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/components/icon.min.css">
-	<link rel="stylesheet" type="text/css" href="css/upload.css">
+	<!-- 	Cropper, Bootstrap, SemanticUI Button and Icon, Custom CSS	-->
+	<link href="assets/bower_components/cropper/dist/cropper.css" rel="stylesheet">
+	<link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/bower_components/semantic-ui-button/button.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/bower_components/semantic-ui-icon/icon.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/upload.css" rel="stylesheet" type="text/css">
 
 	<title>Upload Image</title>
 </head>
@@ -44,7 +45,7 @@
 				<textarea name="description" form="form" class="form-control" id="txtarea"></textarea>
 
 				<br>
-				<button class="ui vertical animated button">
+				<button class="ui vertical animated button primary fluid">
 					<div class="hidden content"><i class="upload icon"></i></div>
 					<div class="visible content">Finish</div>
 				</button>
@@ -52,11 +53,11 @@
 		</div>
 	</div>
 	
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/3.1.6/cropper.js"></script>
-	<script type="text/javascript" src="js/upload.js"></script>
+	<!-- JS Imports	-->
+	<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="assets/bower_components/cropper/dist/cropper.js"></script>
+	<script type="text/javascript" src="assets/js/upload.js"></script>
 </body>
 </html>

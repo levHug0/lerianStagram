@@ -1,6 +1,6 @@
 <?php 
 	require 'includes/pdoConnection.php';
-	require 'includes/header.php';
+	require 'includes/header_footer/header.php';
 
 ?>
 	
@@ -14,7 +14,6 @@
 				$loc = $row['location'];
 				$dec = substr($row['description'], 0, 28) . " . . .";
 				
-
 				echo "<div class='col-12 col-md-4 col-lg-3'>";
 				echo 	"<div class='thumbnail'>";
 				echo 		"<figure class='figure'>";
@@ -28,4 +27,4 @@
 	</div>
 </div>
 
-<?php require 'includes/footer.php' ?>
+<?php require 'includes/header_footer/footer.php' ?>

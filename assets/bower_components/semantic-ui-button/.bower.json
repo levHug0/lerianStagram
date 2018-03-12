@@ -1,0 +1,40 @@
+{
+  "name": "semantic-ui-button",
+  "description": "Button - Semantic UI",
+  "homepage": "http://www.semantic-ui.com",
+  "author": {
+    "name": "Jack Lukic",
+    "web": "http://www.jacklukic.com"
+  },
+  "ignore": [
+    "docs",
+    "node",
+    "server",
+    "spec",
+    "src",
+    "test"
+  ],
+  "keywords": [
+    "semantic",
+    "ui",
+    "css3",
+    "framework"
+  ],
+  "license": [
+    "http://semantic-ui.mit-license.org/"
+  ],
+  "main": [
+    "button.css"
+  ],
+  "version": "2.3.0",
+  "_release": "2.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.3.0",
+    "commit": "b6b3ea5dc264f9521151ee8f82a45c48d4cd782e"
+  },
+  "_source": "https://github.com/Semantic-Org/UI-Button.git",
+  "_target": "^2.3.0",
+  "_originalSource": "semantic-ui-button",
+  "_direct": true
+}

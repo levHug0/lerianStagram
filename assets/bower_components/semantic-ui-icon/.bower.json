@@ -1,0 +1,40 @@
+{
+  "name": "semantic-ui-icon",
+  "description": "Icon - Semantic UI",
+  "homepage": "http://www.semantic-ui.com",
+  "author": {
+    "name": "Jack Lukic",
+    "web": "http://www.jacklukic.com"
+  },
+  "ignore": [
+    "docs",
+    "node",
+    "server",
+    "spec",
+    "src",
+    "test"
+  ],
+  "keywords": [
+    "semantic",
+    "ui",
+    "css3",
+    "framework"
+  ],
+  "license": [
+    "http://semantic-ui.mit-license.org/"
+  ],
+  "main": [
+    "icon.css"
+  ],
+  "version": "2.3.0",
+  "_release": "2.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.3.0",
+    "commit": "0f286e70a1610ae22912b46c1fa151ca5b44f60b"
+  },
+  "_source": "https://github.com/Semantic-Org/UI-Icon.git",
+  "_target": "^2.3.0",
+  "_originalSource": "semantic-ui-icon",
+  "_direct": true
+}

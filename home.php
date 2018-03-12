@@ -1,23 +1,32 @@
+<?php 
+	ob_start();
+	session_start();
+	require 'includes/pdoConnection.php';
+	require 'includes/backend_files/homeBackend.php';
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--	Google Font(Lato), BOOTSTRAP, SemanticUI Button, CUSTOM CSS	-->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/components/button.min.css">
-    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/bower_components/semantic-ui-button/button.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/bower_components/semantic-ui-icon/icon.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="assets/css/home.css">
+
 	<title>Home | To Infinity and Beyond || LerianStagram</title>
 </head>
-<body class="myBackground">
-
+<body>
 	<div class="container">
-			<img src="imgs/logo3.jpg" class="img-responsive" alt="Responsive image">
+			<img src="assets/imgs/logo3.jpg" class="img-fluid" alt="Responsive image">
 
-			<!--	Form to register	-->
+			<!--	Div to register	-->
 			<div class="registerForm">
-				<form action="">
+				<form action="home" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
 					<div class="form-row">
 						<div class="form-group col-12 col-md-6">
 							<label for="firstName">First Name:</label>
@@ -44,16 +53,22 @@
 						</div>
 					</div>
 
+					<div class="form-row register">
+						<div class="form-group col-12">
+							<label for="confirmPass">Confirm Password:</label>
+							<input class="form-control" type="password" name="confirmPass" id="confirmPass" placeholder="Passwords must match" minlength="6">
+						</div>
+					</div>
+
 					<div class="register">
-						<button class="ui primary button fluid big">REGISTER</button>
+						<button class="ui primary button fluid medium" name="register">REGISTER</button>
 					</div>
 				</form>
 			</div>
 
-
-			<!--	Form to login	-->
+			<!--	Div to login	-->
 			<div class="login">
-				<form>
+				<form action="home" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="username">Username:</label>
 	   					 <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username">
@@ -64,7 +79,12 @@
 						<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 					</div>
 
-					<button class="ui primary button fluid big">LOGIN</button>
+					<button class="ui vertical animated button primary fluid">
+						<div class="hidden content">Welcome&nbsp;&nbsp;<i class="smile icon"></i></div>
+						<div class="visible content">LOGIN</div>
+					</button>
+
+					<!-- <button class="ui primary button fluid medium">LOGIN</button> -->
 				</form>
 			</div>
 			
@@ -74,10 +94,9 @@
 			<p style="text-align: center; display:none">Already have an account?&nbsp;&nbsp;<span><strong><em>Sign In</em></strong></span></p>
 	</div>
 
-	 <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/home.js"></script>
+	<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/home.js"></script>
 </body>
 </html>
