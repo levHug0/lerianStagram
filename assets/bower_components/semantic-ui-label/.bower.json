@@ -1,0 +1,40 @@
+{
+  "name": "semantic-ui-label",
+  "description": "Label - Semantic UI",
+  "homepage": "http://www.semantic-ui.com",
+  "author": {
+    "name": "Jack Lukic",
+    "web": "http://www.jacklukic.com"
+  },
+  "ignore": [
+    "docs",
+    "node",
+    "server",
+    "spec",
+    "src",
+    "test"
+  ],
+  "keywords": [
+    "semantic",
+    "ui",
+    "css3",
+    "framework"
+  ],
+  "license": [
+    "http://semantic-ui.mit-license.org/"
+  ],
+  "main": [
+    "label.css"
+  ],
+  "version": "2.3.0",
+  "_release": "2.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.3.0",
+    "commit": "3e705b8fdf9aef2dca5a280938b4c0d486310e1f"
+  },
+  "_source": "https://github.com/Semantic-Org/UI-Label.git",
+  "_target": "^2.3.0",
+  "_originalSource": "semantic-ui-label",
+  "_direct": true
+}

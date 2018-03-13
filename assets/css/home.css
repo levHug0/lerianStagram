@@ -7,7 +7,6 @@ body{
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
 	font-family: 'Lato', sans-serif;
-
 	background: url(../imgs/bg.jpg);
 	background-size: cover; 
 	background-position: center;
@@ -15,7 +14,7 @@ body{
 
 .container {
 	width: 30%;
-	margin: 120px auto 0 auto;
+	margin: 100px auto 0 auto;
 	background-color: #F7F7F7;
 	border-radius: 5px 5px 0 0;
 	opacity: 0.9;
@@ -41,14 +40,25 @@ hr {
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
+/*	THis is the 'Register' and 'Login' span at the bottom of the page	*/
 span:hover {
 	color: #DCDCDC;
+}
+
+/*	This hides all the error messages for the register form inputs	*/
+.ui.basic.label {
+	display: none;
+}
+
+/*	Modal text font-weight is 600	*/
+body.modal-open {
+	font-weight: 600;
 }
 
 /*		Mobile phones	*/
 @media (max-width: 575px) { 
 	.container {
 		width: 70%;
-		margin-top: 40px
+		margin-top: 20px
 	}
 }
