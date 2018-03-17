@@ -1,3 +1,10 @@
+<?php 
+	require 'includes/pdoConnection.php';
+	if (!isset($_SESSION['userLoggedIn'])) {
+		header("location: home");
+		exit();
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,26 +21,32 @@
 	<title>Upload Image</title>
 </head>
 <body>
+	<nav class="navbar navbar-dark bg-secondary">
+		<div class="container">
+			<a href="lerianstagram"><i class="angle left icon"></i>Back</a>
+		</div>
+	</nav>
 
 	<div class="container-fluid">
 		<p>
 			<input type="file" name="file" id="file" class="btn btn-light">
-			<button class="btn btn-secondary">Upload</button>
+			<button class="btn btn-secondary" id="upload">Upload</button>
 		</p>
 	
 		<!-- Crop Button and the Image to Crop -->
 		<div id="picToCrop">
 			<div id="thisImage">
-				<!--	imgs/pics/sydney/syd_port3.jpg	-->
-				<img id="imageToCrop" src="" class="img-responsive">
+				<img id="imageToCrop" src="" class="img-fluid"> <!-- or img-responsive -->
 			</div>
 			<p><button id="cropButton" class="btn btn-success">Crop</button></p>
 		</div>
 		
 		<!-- 	Cropped Image, Description of Image and Submit to upload to database	-->
 		<div id="main">
+			<hr>
 			<img src="" id="newImage" class="img-responsive img-thumbnail">
-			<form action="#" method="POST" id="form">
+
+			<!--																		-->
 				<label for="options">Location:</label>
 				<select class="form-control" id="options">
 					<option>Travel</option>
@@ -45,11 +58,11 @@
 				<textarea name="description" form="form" class="form-control" id="txtarea"></textarea>
 
 				<br>
-				<button class="ui vertical animated button primary fluid">
+				<button class="ui vertical animated button primary fluid" name="finish" id="finish">
 					<div class="hidden content"><i class="upload icon"></i></div>
 					<div class="visible content">Finish</div>
 				</button>
-			</form>
+			<!--																		-->
 		</div>
 	</div>
 	

@@ -12,12 +12,12 @@ img {
 	height: auto;
 }
 
-.cropper-crop {display: none;} .cropper-bg {background: none;}
+
 
 .container-fluid {
 	margin: 0 auto;
 	text-align: center;
-	padding-top: 30px;
+	padding-top: 20px;
 }
 
 .container-fluid div {
@@ -35,6 +35,8 @@ img {
 
 #main label {
 	margin-top: 10px;
+	font-weight: 600;
+	color: white;
 }
 
 textarea {
@@ -62,3 +64,7 @@ textarea {
 		height: 80px;
 	}
 }
+
+.navbar {opacity: 0.75;} nav a{ color: white; font-weight: 700} nav a:hover{ color: #003366; }
+.cropper-crop {display: none;} .cropper-bg {background: none;}
+hr {border-top: 4px double #8c8b8b;text-align: center;} hr:after {content: '\002665';display: inline-block;position: relative;top: -15px;padding: 0 10px;background: #f0f0f0;color: #8c8b8b;font-size: 18px;}

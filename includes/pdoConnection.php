@@ -1,6 +1,7 @@
 <?php 
 	ob_start();
 	session_start();
+	date_default_timezone_set('Australia/Brisbane');
 
 	try {
     	$conn = new PDO("mysql:host=localhost;dbname=lerian",'root' , '');

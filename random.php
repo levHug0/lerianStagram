@@ -1,47 +1,25 @@
-<?php require 'includes/header_footer/header.php' ?>
-	
-
-	<div class="container" id="content">
-		<div class="row">
-
-			<div class="col-12 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<figure class="figure">
-						<img src="https://source.unsplash.com/xw7pZ6uamvI" class="img-responsive figure-img" alt="Responsive Image">
-						<figcaption class="figure-caption text-right"><span><i class="fas fa-heart"></i></span>A caption for the above image</figcaption>
-					</figure>
-				</div>
-			</div>
-
-			<div class="col-12 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<figure class="figure">
-						<img src="https://source.unsplash.com/xw7pZ6uamvI" class="img-responsive figure-img" alt="Responsive Image">
-						<figcaption class="figure-caption text-right"><span><i class="fas fa-heart"></i></span>A caption for the above image</figcaption>
-					</figure>
-				</div>
-			</div>
-
-			<div class="col-12 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<figure class="figure">
-						<img src="https://source.unsplash.com/xw7pZ6uamvI" class="img-responsive figure-img" alt="Responsive Image">
-						<figcaption class="figure-caption text-right"><span><i class="fas fa-heart"></i></span>A caption for the above image</figcaption>
-					</figure>
-				</div>
-			</div>
-
-			<div class="col-12 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<figure class="figure">
-						<img src="https://source.unsplash.com/xw7pZ6uamvI" class="img-responsive figure-img" alt="Responsive Image">
-						<figcaption class="figure-caption text-right"><span><i class="fas fa-heart"></i></span>A caption for the above image</figcaption>
-					</figure>
-				</div>
-			</div>
-
-		</div>
+<?php 
+	require 'includes/pdoConnection.php';
+	require 'includes/header_footer/header.php';
+?>
+<div class="container" id="content">
+	<div class="row">
+		<?php 
+			$query = $conn->prepare("SELECT * FROM random WHERE userID = ? ORDER BY randomID DESC");
+			$query->execute(array($_SESSION['id']));
+			
+			while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+				$loc = $row['imgLocation'];
+				$dec = (strlen($row['description']) < 28) ? $row['description'] : substr($row['description'], 0, 22) . " . . .";
+				
+				echo "<div class='col-12 col-sm-6 col-md-4 col-xl-3'>
+						<figure class='figure img-thumbnail' style='background-color: #fff;'>
+							<img class='img-fluid figure-img mx-auto d-block' alt='image' src=" . $loc  .">
+							<figcaption class='figure-caption text-right'><span><i class='fas fa-heart'></i></span>" . $dec . "</figcaption>
+						</figure>
+					 </div>";
+			}	
+		 ?>
 	</div>
-
-
+</div>
 <?php require 'includes/header_footer/footer.php' ?>

@@ -10,6 +10,8 @@ var firstName 	= document.querySelector("#firstName"),
 	lastName.addEventListener("blur", lastNameVerify, true);
 	createusr.addEventListener("blur", verifyUserName, true);
 	createPass.addEventListener("blur", verifyPass, true);
+	username.addEventListener("blur", verifyLoginUsername, true);
+	password.addEventListener("blur", verifyLoginPassword, true);
 
 /*	To show the modal	*/
 $(document).ready(function() {
@@ -41,14 +43,14 @@ function removeError(id) {
 }
 
 function firstNameVerify() {
-	if (firstName.value.match(/^[a-z-A-Z]*$/)) {
+	if (firstName.value.length > 0) {
 		removeError("#errorFirstName");
 		return true;
 	}
 }
 
 function lastNameVerify() {
-	if (lastName.value.match(/^[a-z-A-Z]*$/)) {
+	if (lastName.value.length > 0) {
 		removeError("#errorLastName");
 		return true;
 	}
@@ -68,6 +70,33 @@ function verifyPass() {
 	}
 }
 
+function verifyLoginUsername() {
+	if (username.value.length > 0) {
+		removeError("#loginUsernameError");
+		return true;
+	}
+}
+
+function verifyLoginPassword() {
+	if (password.value.length > 0) {
+		removeError("#loginPasswordError");
+		return true;
+	}
+}
+
+/*	Validates the inputs from the login form	*/
+function loginValidate() {
+	if (username.value == "") {
+		errorDisplay("#loginUsernameError", "Username is required", username);
+		return false;
+
+	} else if (password.value == "") {
+		errorDisplay("#loginPasswordError", "Password is required", password);
+		return false;
+	}
+}
+
+/*	Validates the inputs from the register form	*/
 function validate() {
 	if (firstName.value == "") {
 		errorDisplay("#errorFirstName", "FirstName is required", firstName);
@@ -118,5 +147,4 @@ function validate() {
 		return false;
 	}
 }
-
 

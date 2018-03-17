@@ -20,6 +20,7 @@ if(isset($_POST['register'])) {
 
 	$pass  = strip_tags($_POST['createPass']);
 	$pass2 = strip_tags($_POST['confirmPass']);
+	$date  = date('Y-m-d h:i:s');
 
 	// If username is already registered, don't add user.
 	// If not, check if both password match, then create the user
@@ -34,22 +35,65 @@ if(isset($_POST['register'])) {
 		// Check if passwords match, then create the user
 		if ($pass == $pass2) {
 			$pass = password_hash($pass, PASSWORD_DEFAULT);
-			$query = $conn->prepare("INSERT INTO users VALUES ('', :usr, :pass, :fName, :lName )");
-			$query->execute(array(":usr"=>$usr, ":pass"=>$pass, ":fName"=>$fName, ":lName"=>$lName));
+		//	$query = $conn->prepare("INSERT INTO users VALUES ('', :usr, :pass, :fName, :lName )");
+		//	$query->execute(array(":usr"=>$usr, ":pass"=>$pass, ":fName"=>$fName, ":lName"=>$lName));
+			$query = $conn->prepare("INSERT INTO users VALUES ('', :fName, :lName, :usr, :pass, :joined)");
+			$query->execute(array(
+				":fName" => $fName, 
+				":lName" => $lName, 
+				":usr" => $usr,
+				":pass" => $pass, 
+				":joined" => $date)
+			);
 			array_push($err, "<br>You have successfully registered!");
 		} else {
 			array_push($err, "Passwords don't match!<br>");
 		}
 	}
+
+/*	When a user wants to login	*/
+} else if (isset($_POST['login'])) {
+	$usr 		= strip_tags($_POST['username']);
+	$usr 		= preg_replace('/\s+/', '', $usr);
+	$pass 		= strip_tags($_POST['password']);
+	$pass 		= preg_replace('/\s+/', '', $pass);
+	$err 		= array();
+
+	$query = $conn->prepare("SELECT * FROM users WHERE BINARY username=:usr");
+	$query->execute(array(":usr" => $usr));
+	$rowCount = $query->rowCount();
+	
+	// $rowCount > 0 means it found a user
+	if ($rowCount == 1) {
+		$row 	= $query->fetch(PDO::FETCH_ASSOC);
+
+		$id 		= $row['id'];
+		$username 	= $row['username'];
+		$fName 		= $row['first_name'];
+		$lName  	= $row['last_name'];
+		$password 	= $row['password'];
+
+		if (password_verify($pass, $password)) {
+			$_SESSION['id'] 			= $row['id'];
+			$_SESSION['username']		= $row['username'];
+			$_SESSION['userLoggedIn'] 	= $row['first_name'] . " " . $row['last_name'];
+
+			header("location: lerianstagram");
+			exit;
+
+		} else {
+			array_push($err, "The password that you've entered is incorrect.<br>");
+		}
+
+	} else {
+		array_push($err, "Sorry that Username is not registered<br><br>** Note: Usernames are Case-sensitive **");
+	}
 }
 
-
-/*	When a user is trying to log in */
-
-
-
+// Function to show the modal
 function showModal($message, $status) {
-	if ($status == "error") {
+	// 0 = error, 1 = success
+	if ($status == 0) {
 		// If it's an error then show error modal
 		echo  	'<div class="modal fade" tabindex="-1" role="dialog" id="myModal" aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -67,7 +111,7 @@ function showModal($message, $status) {
 					</div>
 				</div>';
 
-	} else if ($status == "success") {
+	} else if ($status == 1) {
 		// else it's not an error, it's a registration successful
 		echo 	'<div class="modal fade" tabindex="-1" role="dialog" id="myModal" aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -87,4 +131,4 @@ function showModal($message, $status) {
 	}	
 }
 
- ?>
+?>

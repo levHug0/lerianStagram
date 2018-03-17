@@ -1,3 +1,9 @@
+<?php 
+	if (!isset($_SESSION['userLoggedIn'])) {
+		header("location: home");
+		exit();
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,41 +13,47 @@
 
     <!-- Google font, Bootstrap CSS, Font Awesome, Custom CSS-->
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/fontawesome/web-fonts-with-css/css/fontawesome-all.css">
+	<link rel="stylesheet" type="text/css" href="assets/bower_components/semantic-ui-icon/icon.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/header.css">
 
 	<title>LerianStagram</title>
 </head>
 <body>
+	<nav class="navbar navbar-expand-md navbar-light bg-light py-1">
+		<div class="container">
+		 	<a href="lerianstagram" class="navbar-brand">Lerianstagram</a>
+		 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		   	 	<span class="navbar-toggler-icon"></span>
+		 	</button>
 
-	<nav class="navbar navbar-default">
-			<div class="container">	<!-- CONTAINER-->
+			  <!--	Collapse Items	-->
+			<div class="collapse navbar-collapse" id="nav">
+			  	<ul class="navbar-nav mr-auto">
+			  		<li class="nav-item"><a href="about" class="nav-link">About</a></li>
+			  		<li class="nav-item"><a href="travel" class="nav-link">Travel&nbsp;&nbsp;<i class="fas fa-plane"></i></a></li>
+			  		<li class="nav-item"><a href="food" class="nav-link">Food&nbsp;&nbsp;<i class="fas fa-utensils"></i></a></li>
+			  		<li class="nav-item"><a href="random" class="nav-link">Random&nbsp;&nbsp;<i class="fas fa-book"></i></a></li>
+			  	</ul>
 
-				<div class="navbar-header">
-				<!--	FROM HERE	TO			-->
-					 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#iHaveToMatch" aria-expanded="false">
-				        <span class="sr-only"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-		 			 </button>
-		 		<!--	HERE IS THE "HAMBURGER" MENU WHEN RESIZED	-->
-					<a class="navbar-brand active" href="#">&nbsp;&nbsp;LerianStagram</a><!-- Logo/Header-->
-				</div>
+			  	<ul class="navbar-nav ml-auto">
+			  		<!-- Shown only on large devices	-->
+			  		<span class="navbar-text d-none d-md-block"><?php echo $_SESSION['userLoggedIn']; ?></span>
 
-				<div class="collapse navbar-collapse" id="iHaveToMatch">	<!-- Collapse when resized-->
+			  		<!-- Dropdown -->
+			  		<li class="dropdown">
+				  		<a href="#" id="settings" class="nav-link" data-toggle="dropdown"><i class="cog icon"></i></a>
 
-					<ul class="nav navbar-nav">	<!-- Menu after the logo-->
-						<li><a href="about">About</a></li>
-						<li><a href="travel">Travel&nbsp;&nbsp;<i class="fas fa-plane"></i></a></li>
-					</ul>
-
-					<ul class="nav navbar-nav navbar-right">	<!-- RIGHT menu-->
-						<li><a href="food">Food&nbsp;&nbsp;<i class="fas fa-utensils"></i></a></li>
-						<li><a href="random">Random&nbsp;&nbsp;<i class="fas fa-book"></i></a></li>
-					</ul>
-
-				</div>
+				  		<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="settings">
+				  			<li><a href="upload" class="dropdown-item">Upload</a></li>
+				  			<li><a href="#" class="dropdown-item">Another action</a></li>
+				  			<li><a href="#" class="dropdown-item">Another action2</a></li>
+				  			<li class="dropdown-divider"></li>
+				  			<li><a class="dropdown-item" href="includes/logout">Log Out</a></li>
+				  		</ul>
+			  		</li>
+			  	</ul>
 			</div>
-		</nav>
+		</div>
+	</nav>

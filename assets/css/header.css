@@ -6,31 +6,34 @@ body{
 	-webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
-
 	font-family: 'Bree Serif', serif;
 	background: url(../imgs/bg.jpg);
 	background-size: cover; 
 	background-position: center;
 }
 
-a {
-	font-size: 1.3em;
-}	
+/*** Content for Navbar ***/
+.navbar-nav.mr-auto > li{
+	  /* margin-left: -5px;*/
+}
+a, span.navbar-text {
+	font-size: 1em;
+}
 
+/***	Content for the images	***/
 #content {
 	padding-top: 50px;
 }
-
 img {
 	border-radius: 5px 5px 0 0;
 }
-
 figcaption {
-	padding-top: 8px;
 	font-weight: bold;
 	color: grey;
 }
 
+
+/*
 span {
-	padding-right: 10px
-}
+	padding-right: 10px;
+}*/

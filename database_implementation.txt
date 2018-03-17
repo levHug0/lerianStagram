@@ -1,0 +1,39 @@
+create table users (
+	id INT AUTO_INCREMENT,
+	first_name VARCHAR(100),
+	last_name  VARCHAR(100),
+	username   VARCHAR(100),
+	password   VARCHAR(100),
+	joined	DATETIME,
+	PRIMARY KEY (id)
+);
+
+create table travel (
+	travelID INT AUTO_INCREMENT,
+	imgLocation VARCHAR(100),
+	description VARCHAR(100),
+	posted DATETIME,
+	userID INT NOT NULL,
+	PRIMARY KEY (travelID),
+	FOREIGN KEY (userID) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+create table random (
+	randomID INT AUTO_INCREMENT,
+	imgLocation VARCHAR(100),
+	description VARCHAR(100),
+	posted DATETIME,
+	userID INT NOT NULL,
+	PRIMARY KEY (randomID),
+	FOREIGN KEY (userID) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+create table food (
+	foodID INT AUTO_INCREMENT,
+	imgLocation VARCHAR(100),
+	description VARCHAR(100),
+	posted DATETIME,
+	userID INT NOT NULL,
+	PRIMARY KEY (foodID),
+	FOREIGN KEY (userID) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);

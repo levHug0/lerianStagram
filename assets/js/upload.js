@@ -1,6 +1,5 @@
-var val, source;
-
-var show = { display: "inline-block"},
+var val, source,
+	show = { display: "inline-block"},
 	hide = { display: "none"};
 
 var	img 		= document.querySelector("#imageToCrop"),
@@ -10,21 +9,22 @@ var	img 		= document.querySelector("#imageToCrop"),
 	mainDiv		= document.querySelector("#main");
 
 $(file).on("change", function() {
+	$(img).cropper("destroy");
 	val = this.value;
 	val = val.substring(val.lastIndexOf('.') + 1).toLowerCase();
 	source = window.URL.createObjectURL(this.files[0]);
 });
 
 /*	When the 'Upload' button is clicked	*/
-$("button:nth-of-type(1)").on("click", function() {
+$("#upload").on("click", function() {
 	if (file.value.length == 0) {
 		alert("File is empty!");
 
 	} else {
-		$(file).prop("disabled", true);
-		$(ret).attr("src", ""); 
-
 		if (val == "png" || val == "jpg" || val == "jpeg" || val == "gif" || val == "tiff") {
+			$(file).prop("disabled", true);
+			$(ret).attr("src", ""); 
+
 			img.src = source;
 			$(cropperDiv).css(show);
 			$(mainDiv).css(hide);
@@ -34,16 +34,12 @@ $("button:nth-of-type(1)").on("click", function() {
 				zoomable: false,
 				movable: false,
 				responsive: true,
-				//minCropBoxWidth: 640,
-				//minCropBoxHeight: 480,
-				//cropBoxResizable: false 
 			});
 
 		} else {
 			val.value = "";
 			img.src= "";
-
-			// Show error
+			alert("Incorrect file format\n\nMake sure to upload an Image!");
 		}
 	}
 });
@@ -51,9 +47,9 @@ $("button:nth-of-type(1)").on("click", function() {
 /***	For Cropping	***/
 $("#cropButton").on("click", function() {
 	var cropped = $('#imageToCrop').cropper('getCroppedCanvas', {
-		maxWidth: 800, 
-		maxHeight: 600
-	}).toDataURL("image/png");
+		width: 640,
+		height: 480
+	}).toDataURL("image/" + val);
 
 	$(ret).attr("src", cropped); 
 
@@ -62,7 +58,39 @@ $("#cropButton").on("click", function() {
 	$(cropperDiv).css(hide);
 	$(mainDiv).css(show);
 
-	// Destroys the cropper and enables the file input
-	$(img).cropper("destroy");
+	//enables the file input
 	$(file).prop("disabled", false);
 });
+
+/*	AJAX the data to the database	*/
+$('#finish').on("click", function() {
+	$(img).cropper('getCroppedCanvas', {width: 320, height: 240, checkOrientation: false}).toBlob(function (blob) {
+		var formData = new FormData();
+		formData.append('croppedImage', blob);
+		formData.append('location', 	$('select').val());
+		formData.append('description', 	$('textarea').val());
+		formData.append('imageType', val);
+
+		$.ajax('includes/backend_files/uploadBackend.php', {
+			method: "POST",
+			data: formData,
+			processData: false,
+	    	contentType: false,
+			success: function() {
+				alert("Upload Success");
+				location.reload();
+			},
+			error: function() {
+				alert("Upload error");
+			}
+		}); // Endof ajax
+	}); // Endof cropper
+}); // Endof Selector
+
+
+// Goes back to previous page, but it reloads it
+// document.referrer gets url of the previous location the user comes from
+/*
+$('#back').on("click", function() {
+	location.replace(document.referrer);
+});*/

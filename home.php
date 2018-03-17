@@ -21,6 +21,8 @@
 </head>
 <body>
 	<?php 
+		// If is for showing error/success messages to the user when they register
+		// else if is for showing error messages to the user when they login
 		if (isset($_POST['register'])) {
 			echo '<script type="text/javascript">
 					window.onload = function() {
@@ -29,12 +31,12 @@
 					}
 				</script>';
 
-			// Check form for error, if no errors, then show a registration success
+			// Check form for error = 0, if no errors show a registration success = 1
 			if (in_array("Sorry that Username is taken<br>", $err)) {
-				showModal("Sorry that Username is taken<br>", "error");
+				showModal("Sorry that Username is taken<br>", 0);
 
 			} else if (in_array("Passwords don't match!<br>", $err)) {
-				showModal("Passwords don't match!<br>", "error");
+				showModal("Passwords don't match!<br>", 0);
 
 			} else if (in_array("<br>You have successfully registered!", $err)) {
 				echo '		<script type="text/javascript">
@@ -43,13 +45,21 @@
 									$(".registerForm").hide();
 								}
 							</script>';
-				showModal("<br>You have successfully registered!", "success");
+				showModal("<br>You have successfully registered!", 1);
+			}
+
+		} else if (isset($_POST['login'])) {
+			if (in_array("The password that you've entered is incorrect.<br>", $err)) {
+				showModal("The password that you've entered is incorrect.<br>", 0);
+
+			} else if (in_array("Sorry that Username is not registered<br><br>** Note: Usernames are Case-sensitive **", $err)) {
+				showModal("Sorry that Username is not registered<br><br>** Note: Usernames are Case-sensitive **", 0);
 			}
 		}
 	?>
 	<div class="container">
-			<img src="assets/imgs/logo3.jpg" class="img-fluid" alt="Responsive image">
-
+			<img src="assets/imgs/logo3.jpg" class="img-fluid mx-auto d-block" alt="Logo">
+			
 			<!--	Div to register	-->
 			<div class="registerForm">
 				<form action="home" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
@@ -92,25 +102,27 @@
 					</div>
 
 					<div class="register">
-						<button class="ui primary button fluid medium" name="register">REGISTER</button>
+						<button type="submit" name="register" class="ui primary button fluid medium">REGISTER</button>
 					</div>
 				</form>
 			</div>
 
 			<!--	Div to login	-->
 			<div class="login">
-				<form action="home" method="POST" enctype="multipart/form-data">
+				<form action="home" method="POST" enctype="multipart/form-data" onsubmit="return loginValidate()">
 					<div class="form-group">
 						<label for="username">Username:</label>
 	   					 <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username">
+	   					 <div class="ui pointing red basic label" id="loginUsernameError"></div>
 					</div>
 
 					<div class="form-group">
 						<label for="password">Password:</label>
 						<input type="password" class="form-control" name="password" id="password" placeholder="Password" maxlength="30">
+						<div class="ui pointing red basic label" id="loginPasswordError"></div>
 					</div>
 
-					<button class="ui vertical animated button primary fluid">
+					<button type="submit" name="login" class="ui vertical animated button primary fluid">
 						<div class="hidden content">Welcome&nbsp;&nbsp;<i class="smile icon"></i></div>
 						<div class="visible content">LOGIN</div>
 					</button>
