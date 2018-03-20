@@ -25,35 +25,29 @@ body{
 	font-weight: 700;
 }
 
-.container span {
-	font-size: 1.2em;
-}
-
 .registerForm {
 	display: none;
 }
 
-hr {
-	order: 0;
-    height: 1px;
-    background: #333;
-    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+.ui.basic.label {
+	display: none; /*	This hides all the error messages for the register form inputs	*/
 }
 
 /*	THis is the 'Register' and 'Login' span at the bottom of the page	*/
+p {
+	text-align: center;
+} 
+
+p span {
+	font-size: 1.2em;
+} 
+
 span:hover {
 	color: #DCDCDC;
 }
 
-/*	This hides all the error messages for the register form inputs	*/
-.ui.basic.label {
-	display: none;
-}
 
-/*	Modal text font-weight is 600	*/
-body.modal-open {
-	font-weight: 600;
-}
+hr {order: 0;height: 1px;background: #333;background-image: linear-gradient(to right, #ccc, #333, #ccc);}
 
 /*		Mobile phones	*/
 @media (max-width: 575px) { 

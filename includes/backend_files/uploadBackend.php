@@ -23,8 +23,3 @@
 		":posted" => $date,
 		":usr" => $_SESSION['id'])
 	);
-
-
-
-
-

@@ -15,7 +15,7 @@
 				echo "<div class='col-12 col-sm-6 col-md-4 col-xl-3'>
 						<figure class='figure img-thumbnail' style='background-color: #fff;'>
 							<img class='img-fluid figure-img mx-auto d-block' alt='image' src=" . $loc  .">
-							<figcaption class='figure-caption text-right'><span><i class='fas fa-heart'></i></span>" . $dec . "</figcaption>
+							<figcaption class='figure-caption text-right'><span><i class='fas fa-heart'></i></span> " . $dec . "</figcaption>
 						</figure>
 					 </div>";
 			}	

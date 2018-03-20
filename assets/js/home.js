@@ -1,16 +1,16 @@
 var firstName 	= document.querySelector("#firstName"),
 	lastName	= document.querySelector("#lastName"),
-	createusr	= document.querySelector("#createUsername"),
+	email		= document.querySelector("#createEmail"),
 	createPass	= document.querySelector("#createPass"),
 	confPass	= document.querySelector("#confirmPass"),
-	username    = document.querySelector("#username"),
+	loginEmail  = document.querySelector("#email"),
 	password	= document.querySelector("#password");
 
 	firstName.addEventListener("blur", firstNameVerify, true);
 	lastName.addEventListener("blur", lastNameVerify, true);
-	createusr.addEventListener("blur", verifyUserName, true);
+	email.addEventListener("blur", verifyEmail, true);
 	createPass.addEventListener("blur", verifyPass, true);
-	username.addEventListener("blur", verifyLoginUsername, true);
+	loginEmail.addEventListener("blur", verifyLoginEmail, true);
 	password.addEventListener("blur", verifyLoginPassword, true);
 
 /*	To show the modal	*/
@@ -22,8 +22,6 @@ $(document).ready(function() {
 $('.container').on("click", "span", function() {
 	$('.registerForm').slideToggle();
 	$('.login').slideToggle();
-	$('p:nth-of-type(1)').slideToggle();
-	$('p:nth-of-type(2)').slideToggle();
 });
 
 /*******************************************************/
@@ -56,9 +54,9 @@ function lastNameVerify() {
 	}
 }
 
-function verifyUserName() {
-	if (createusr.value.length >= 6 && createusr.value.match(/^[\w\.]*$/)) {
-		removeError("#errorUserName");
+function verifyEmail() {
+	if (email.value.length > 3 && email.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+		removeError("#errorEmail");
 		return true;
 	}
 }
@@ -70,15 +68,15 @@ function verifyPass() {
 	}
 }
 
-function verifyLoginUsername() {
-	if (username.value.length > 0) {
-		removeError("#loginUsernameError");
+function verifyLoginEmail() {
+	if (loginEmail.value.length > 0 && loginEmail.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+		removeError("#loginEmailError");
 		return true;
 	}
 }
 
 function verifyLoginPassword() {
-	if (password.value.length > 0) {
+	if (password.value.length > 0 && password.value.length > 5) {
 		removeError("#loginPasswordError");
 		return true;
 	}
@@ -86,12 +84,20 @@ function verifyLoginPassword() {
 
 /*	Validates the inputs from the login form	*/
 function loginValidate() {
-	if (username.value == "") {
-		errorDisplay("#loginUsernameError", "Username is required", username);
+	if (loginEmail.value == "") {
+		errorDisplay("#loginEmailError", "Email is required", loginEmail);
+		return false;
+
+	} else if (!loginEmail.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+		errorDisplay("#loginEmailError", "Email format: example@gmail.com", loginEmail);
 		return false;
 
 	} else if (password.value == "") {
 		errorDisplay("#loginPasswordError", "Password is required", password);
+		return false;
+
+	} else if (password.value.length < 6) {
+		errorDisplay("#loginPasswordError", "Minimum length is 6 characters", password);
 		return false;
 	}
 }
@@ -114,16 +120,16 @@ function validate() {
 		errorDisplay("#errorLastName", "Last Name can only contain letters and hyphens", lastName);
 		return false;
 
-	} else if (createusr.value == "") {
-		errorDisplay("#errorUserName", "Username is required", createusr);
+	} else if (email.value == "") {
+		errorDisplay("#errorEmail", "Email is required", email);
 		return false;
 
-	} else if (createusr.value.length < 6) {
-		errorDisplay("#errorUserName", "Minimum length is 6 characters", createusr);
+	} else if (email.value.length < 4) {
+		errorDisplay("#errorEmail", "Minimum length is 4 characters", email);
 		return false;
 
-	} else if (!createusr.value.match(/^[\w\.]*$/)) {
-		errorDisplay("#errorUserName", "Allowed characters are: letters, numbers, underscores, periods", createusr);
+	} else if (!email.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+		errorDisplay("#errorEmail", "Email format: example@gmail.com", email);
 		return false;
 
 	} else if (createPass.value == "") {
@@ -147,4 +153,3 @@ function validate() {
 		return false;
 	}
 }
-

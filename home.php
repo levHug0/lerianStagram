@@ -32,8 +32,11 @@
 				</script>';
 
 			// Check form for error = 0, if no errors show a registration success = 1
-			if (in_array("Sorry that Username is taken<br>", $err)) {
-				showModal("Sorry that Username is taken<br>", 0);
+			if (in_array("Incorrect Email format!<br>", $err)) {
+				showModal("Incorrect Email format!<br>", 0);
+
+			} else if (in_array("Sorry that email is taken<br>", $err)) {
+				showModal("Sorry that email is taken<br>", 0);
 
 			} else if (in_array("Passwords don't match!<br>", $err)) {
 				showModal("Passwords don't match!<br>", 0);
@@ -49,11 +52,12 @@
 			}
 
 		} else if (isset($_POST['login'])) {
+
 			if (in_array("The password that you've entered is incorrect.<br>", $err)) {
 				showModal("The password that you've entered is incorrect.<br>", 0);
 
-			} else if (in_array("Sorry that Username is not registered<br><br>** Note: Usernames are Case-sensitive **", $err)) {
-				showModal("Sorry that Username is not registered<br><br>** Note: Usernames are Case-sensitive **", 0);
+			} else if (in_array("Sorry that email is not registered<br>", $err)) {
+				showModal("Sorry that email is not registered<br>", 0);
 			}
 		}
 	?>
@@ -79,9 +83,9 @@
 
 					<div class="form-row register">
 						<div class="form-group col-12">
-							<label for="createUsername">Username:</label>
-							<input class="form-control" type="text" name="createUsername" id="createUsername" placeholder="Must be at least 6 characters long">
-							<div class="ui pointing red basic label" id="errorUserName"></div>
+							<label for="createEmail">Email:</label>
+							<input class="form-control" type="text" name="createEmail" id="createEmail" placeholder="Email">
+							<div class="ui pointing red basic label" id="errorEmail"></div>
 						</div>
 					</div>
 
@@ -111,9 +115,9 @@
 			<div class="login">
 				<form action="home" method="POST" enctype="multipart/form-data" onsubmit="return loginValidate()">
 					<div class="form-group">
-						<label for="username">Username:</label>
-	   					 <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username">
-	   					 <div class="ui pointing red basic label" id="loginUsernameError"></div>
+						<label for="email">Email:</label>
+	   					 <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email">
+	   					 <div class="ui pointing red basic label" id="loginEmailError"></div>
 					</div>
 
 					<div class="form-group">
@@ -131,8 +135,8 @@
 			
 			<!--	Bottom of the container -->
 			<hr>
-			<p style="text-align: center">Don't have an account?&nbsp;&nbsp;<span><strong><em>Register</em></strong></span></p>
-			<p style="text-align: center; display:none">Already have an account?&nbsp;&nbsp;<span><strong><em>Sign In</em></strong></span></p>
+			<p class="login">Don't have an account?&nbsp;&nbsp;<span><strong><em>Register</em></strong></span></p>
+			<p class="registerForm">Already have an account?&nbsp;&nbsp;<span><strong><em>Sign In</em></strong></span></p>
 	</div>
 	<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
