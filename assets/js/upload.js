@@ -1,4 +1,4 @@
-var val, source,
+var val, source, saveCropper,
 	show = { display: "inline-block"},
 	hide = { display: "none"};
 
@@ -14,6 +14,7 @@ $(file).on("change", function() {
 	val = val.substring(val.lastIndexOf('.') + 1).toLowerCase();
 	source = window.URL.createObjectURL(this.files[0]);
 });
+
 
 /*	When the 'Upload' button is clicked	*/
 $("#upload").on("click", function() {
@@ -33,7 +34,6 @@ $("#upload").on("click", function() {
 				aspectRatio: 4 / 3,
 				zoomable: false,
 				movable: false,
-				responsive: true,
 			});
 
 		} else {
@@ -60,11 +60,12 @@ $("#cropButton").on("click", function() {
 
 	//enables the file input
 	$(file).prop("disabled", false);
+	saveCropper = $(img).cropper('getCroppedCanvas', {width: 320, height: 240, checkOrientation: false});		// this saves the cropped image into the variable saveCropper
 });
 
 /*	AJAX the data to the database	*/
 $('#finish').on("click", function() {
-	$(img).cropper('getCroppedCanvas', {width: 320, height: 240, checkOrientation: false}).toBlob(function (blob) {
+	saveCropper.toBlob(function (blob) {
 		var formData = new FormData();
 		formData.append('croppedImage', blob);
 		formData.append('location', 	$('select').val());
