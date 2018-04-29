@@ -46,7 +46,6 @@
 			<hr>
 			<img src="" id="newImage" class="img-responsive img-thumbnail">
 
-			<!--																		-->
 				<label for="options">Location:</label>
 				<select class="form-control" id="options">
 					<option>Travel</option>
@@ -62,7 +61,6 @@
 					<div class="hidden content"><i class="upload icon"></i></div>
 					<div class="visible content">Finish</div>
 				</button>
-			<!--																		-->
 		</div>
 	</div>
 	

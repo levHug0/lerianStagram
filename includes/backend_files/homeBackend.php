@@ -20,7 +20,7 @@ if(isset($_POST['register'])) {
 	$pass2 	= strip_tags($_POST['confirmPass']);
 	$date  	= date('Y-m-d h:i:s');
 
-	// Check if email follows this pattern
+	// Check if its an email
 	if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		// If email is already registered, don't add user.
 		// If not, check if both password match, then create the user

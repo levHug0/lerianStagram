@@ -1,6 +1,7 @@
 <?php 
 	require 'includes/pdoConnection.php';
-	require 'includes/header_footer/header.php'; ?>
+	require 'includes/header_footer/header.php'; 
+?>
 	
 	
 

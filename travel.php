@@ -1,7 +1,6 @@
 <?php 
 	require 'includes/pdoConnection.php';
 	require 'includes/header_footer/header.php';
-
 ?>
 <div class="container" id="content">
 	<div class="row">
