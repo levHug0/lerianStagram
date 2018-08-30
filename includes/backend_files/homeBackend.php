@@ -83,7 +83,7 @@ if(isset($_POST['register'])) {
 			exit;
 
 		} else {
-			array_push($err, "The password that you've entered is incorrect.<br>");
+			array_push($err, "Entered Password is incorrect.<br>");
 		}
 
 	} else {

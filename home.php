@@ -53,8 +53,8 @@
 
 		} else if (isset($_POST['login'])) {
 
-			if (in_array("The password that you've entered is incorrect.<br>", $err)) {
-				showModal("The password that you've entered is incorrect.<br>", 0);
+			if (in_array("Entered Password is incorrect.<br>", $err)) {
+				showModal("Entered Password is incorrect.<br>", 0);
 
 			} else if (in_array("Sorry that email is not registered<br>", $err)) {
 				showModal("Sorry that email is not registered<br>", 0);
